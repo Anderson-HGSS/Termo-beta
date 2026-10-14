@@ -1,0 +1,148 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header{
+    margin-top: 30px;
+    display: flex;
+    width: 700px;
+    justify-content: space-between;
+}
+
+header div img{
+    width: 40px;
+    height: 40px;
+}
+
+header h1{
+    margin-left: 60px;
+}
+
+header div{
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    background-color: #b3b3b3;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+header div:hover{
+    transform: scale(0.95);
+}
+
+body{    
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(31, 31, 31);
+    color: azure;
+}
+
+#respostas{
+    align-items: center;
+    text-align: center;
+}
+
+#letras{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.letra{
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+    border-radius: 20px;
+    border: #b3b3b3 solid 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 30px;
+    transition: 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.letra:hover{
+    transform: scale(0.98);
+}
+
+.resposta-atual .letra{
+    cursor: pointer;
+}
+
+.resposta-atual .letra-vazia:hover{
+    transform: scale(0.98);
+    background-color: #313131;
+}
+
+.letra-incorreta{
+    background-color: #b3b3b3;
+    border-color: #b3b3b3;
+    cursor: default;
+}
+
+.letra-contem{
+    background-color: #c7aa2b;
+    border-color: #c7aa2b;
+    cursor: default;
+}
+
+.letra-correta{
+    background-color: #13bdb4;
+    border-color: #13bdb4;
+    cursor: default;
+}
+
+.letra-atual{
+    box-shadow: #50d6ff 0px 0px 10px;
+    border-color: #50d6ff;
+    background-color: #0c242b;
+    transform: scale(0.98);
+}
+
+#teclado{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#teclado button{
+    padding: 10px;
+    width: 50px;
+    height: 60px;
+    font-size: 20px;
+    color: white;
+    background-color: #3b3b3b;
+    border: #3b3b3b solid 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    text-transform: uppercase;
+}
+
+#teclado button:hover{
+    box-shadow: #acacac 0px 3px;
+    transform: translate(0px, -3px);
+}
+
+#teclado #backspace{
+    width: 150px;
+}
+
+#teclado #enter{
+    width: 100px;
+}
