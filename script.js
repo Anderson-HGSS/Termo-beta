@@ -1304,6 +1304,28 @@ function atualizarTeclado() {
 
 }
 
+// Permite escolher a casa ativa clicando ou tocando nela.
+linhas.forEach((linha, indiceLinha) => {
+    const letras = obterLetrasDaLinha(indiceLinha);
+
+    letras.forEach((casa, indiceCasa) => {
+        casa.addEventListener("click", () => {
+
+            // Impede a seleção se o jogo terminou
+            // ou se a casa não pertence à linha atual.
+            if (jogoFinalizado || indiceLinha !== tentativaAtual) {
+                return;
+            }
+
+            // Define a casa clicada como a posição atual.
+            letraAtual = indiceCasa;
+
+            // Atualiza o destaque visual do quadrado selecionado.
+            atualizarLinhaAtual();
+        });
+    });
+});
+
 
 
 // Eventos do teclado virtual.
