@@ -1,44 +1,16 @@
-*{
+* {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-header{
-    margin-top: 30px;
-    display: flex;
-    width: 700px;
-    justify-content: space-between;
-}
+:root { color-scheme: dark; }
 
-header div img{
-    width: 40px;
-    height: 40px;
-}
-
-header h1{
-    margin-left: 60px;
-}
-
-header div{
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-    background-color: #b3b3b3;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-header div:hover{
-    transform: scale(0.95);
-}
-
-body{    
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 0 12px calc(18px + env(safe-area-inset-bottom));
     align-items: center;
     text-align: center;
     display: flex;
@@ -47,102 +19,139 @@ body{
     color: azure;
 }
 
-#respostas{
-    align-items: center;
-    text-align: center;
-}
-
-#letras{
+header {
+    margin: 24px auto 18px;
     display: flex;
-    flex-direction: row;
-    gap: 5px;
-    margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: min(700px, 100%);
 }
 
-.letra{
-    width: 80px;
-    height: 80px;
-    background-color: transparent;
-    border-radius: 20px;
-    border: #b3b3b3 solid 3px;
+header h1 {
+    margin: 0;
+    font-size: clamp(1.15rem, 3.6vw, 2rem);
+    white-space: nowrap;
+}
+
+header div {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    flex: 0 0 auto;
+    background-color: #b3b3b3;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+header div img { width: 100%; height: 100%; object-fit: contain; }
+header div:hover { transform: scale(0.95); }
+.acoes-header { display: flex; align-items: center; gap: 5px; }
+
+main {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+#respostas { width: 100%; display: flex; flex-direction: column; align-items: center; }
+.resposta { width: 100%; display: flex; justify-content: center; }
+.letras { display: flex; flex-direction: row; gap: 5px; margin-top: 8px; }
+
+.letra {
+    width: clamp(42px, 10.5vw, 80px);
+    height: clamp(42px, 10.5vw, 80px);
+    background-color: transparent;
+    border-radius: clamp(9px, 2vw, 20px);
+    border: #b3b3b3 solid 3px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    font-size: 30px;
+    font-size: clamp(20px, 5vw, 30px);
     transition: 0.3s;
     font-weight: bold;
     text-transform: uppercase;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.letra:hover{
-    transform: scale(0.98);
-}
+.letra:hover { transform: scale(0.98); }
+.resposta-atual .letra { cursor: pointer; touch-action: manipulation; }
+.resposta-atual .letra-vazia:hover { transform: scale(0.98); background-color: #313131; }
+.letra-incorreta { background-color: #777; border-color: #777; cursor: default; }
+.letra-contem { background-color: #c7aa2b; border-color: #c7aa2b; cursor: default; }
+.letra-correta { background-color: #13bdb4; border-color: #13bdb4; cursor: default; }
+.letra-atual { box-shadow: #50d6ff 0 0 10px; border-color: #50d6ff; background-color: #0c242b; transform: scale(0.98); }
 
-.resposta-atual .letra{
-    cursor: pointer;
-}
-
-.resposta-atual .letra-vazia:hover{
-    transform: scale(0.98);
-    background-color: #313131;
-}
-
-.letra-incorreta{
-    background-color: #b3b3b3;
-    border-color: #b3b3b3;
-    cursor: default;
-}
-
-.letra-contem{
-    background-color: #c7aa2b;
-    border-color: #c7aa2b;
-    cursor: default;
-}
-
-.letra-correta{
-    background-color: #13bdb4;
-    border-color: #13bdb4;
-    cursor: default;
-}
-
-.letra-atual{
-    box-shadow: #50d6ff 0px 0px 10px;
-    border-color: #50d6ff;
-    background-color: #0c242b;
-    transform: scale(0.98);
-}
-
-#teclado{
-    margin-top: 30px;
+#teclado {
+    width: min(700px, 100%);
+    margin-top: clamp(18px, 4vh, 30px);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 8px;
 }
 
-#teclado button{
-    padding: 10px;
-    width: 50px;
-    height: 60px;
-    font-size: 20px;
+.linha-teclado { width: 100%; display: flex; justify-content: center; gap: clamp(3px, 0.8vw, 7px); }
+#teclado button {
+    min-width: 0;
+    flex: 1 1 0;
+    max-width: 58px;
+    height: clamp(44px, 7vh, 60px);
+    padding: 4px 2px;
+    font-size: clamp(13px, 2.5vw, 20px);
     color: white;
     background-color: #3b3b3b;
     border: #3b3b3b solid 1px;
-    border-radius: 10px;
+    border-radius: 9px;
     cursor: pointer;
     transition: 0.3s;
     position: relative;
     text-transform: uppercase;
+    touch-action: manipulation;
+}
+#teclado button:hover { box-shadow: #acacac 0 3px; transform: translateY(-3px); }
+#teclado #backspace { flex: 1.8 1 0; max-width: 105px; font-size: clamp(18px, 3vw, 25px); }
+#teclado #enter { flex: 1.5 1 0; max-width: 82px; font-size: clamp(11px, 2vw, 16px); }
+
+/* Campo discreto que aciona o teclado nativo em celulares. */
+#entrada-mobile {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    opacity: 0.01;
+    font-size: 16px;
+    z-index: -1;
 }
 
-#teclado button:hover{
-    box-shadow: #acacac 0px 3px;
-    transform: translate(0px, -3px);
+@media (max-width: 480px) {
+    body { padding-left: 8px; padding-right: 8px; }
+    header { margin-top: 14px; margin-bottom: 12px; gap: 7px; }
+    header div { width: 34px; height: 34px; padding: 7px; border-radius: 8px; }
+    header h1 { font-size: clamp(1rem, 4.2vw, 1.3rem); }
+    .acoes-header { gap: 4px; }
+    .letras { gap: 4px; margin-top: 6px; }
+    .letra { border-width: 2px; }
+    #teclado { margin-top: 20px; gap: 7px; }
+    .linha-teclado { gap: 4px; }
+    #teclado button { height: clamp(42px, 6.5vh, 52px); border-radius: 7px; }
 }
 
-#teclado #backspace{
-    width: 150px;
-}
-
-#teclado #enter{
-    width: 100px;
+@media (max-width: 350px) {
+    header h1 { font-size: 0.95rem; }
+    header div { width: 30px; height: 30px; padding: 6px; }
+    .letras { gap: 3px; }
+    .letra { width: calc((100vw - 48px) / 5); height: calc((100vw - 48px) / 5); font-size: 19px; }
+    #teclado { gap: 6px; }
+    .linha-teclado { gap: 3px; }
+    #teclado button { font-size: 12px; padding: 2px 0; }
 }
